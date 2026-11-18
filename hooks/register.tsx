@@ -48,6 +48,8 @@ const prettyFolder = (folder: string): string => {
   return words.charAt(0).toUpperCase() + words.slice(1)
 }
 
+const isBtw = (s: RawSession): boolean => /^btw\s*:/i.test(s.title ?? '')
+
 const toRow = (s: RawSession, now: number, isCurrent: boolean): Row => {
   const last = s.lastActivityAt ?? ''
   const state: Row['state'] =
@@ -85,7 +87,7 @@ const refresh = async ($: EngineInterface) => {
       $.mcp.call(SERVER, 'list_sessions', { limit: 100 }),
       $.mcp.call(SERVER, 'get_session', { session_id: 'self' }),
     ])
-    const others = (JSON.parse(textOf(list)) as RawSession[]).map(s => toRow(s, now, false))
+    const others = (JSON.parse(textOf(list)) as RawSession[]).filter(s => !isBtw(s)).map(s => toRow(s, now, false))
     const current = toRow(JSON.parse(textOf(self)) as RawSession, now, true)
     await update($, board, () => ({ rows: [current, ...others], error: null, at: now }))
   } catch (err) {

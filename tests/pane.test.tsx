@@ -18,6 +18,7 @@ const NOW = Date.parse('2026-11-12T15:00:00Z')
 const SESSIONS = [
   { sessionId: 'local_a', title: 'Bilan client', cwd: '/Code/client-a', isRunning: true, lastActivityAt: '2026-11-12T14:59:00Z', group: null, link: 'claude://x/local_a' },
   { sessionId: 'local_b', title: 'Audit du site', cwd: '/Code/client-a', prState: 'OPEN', prNumber: 72, lastActivityAt: '2026-11-12T10:00:00Z', group: { name: 'CLIENT A' }, link: 'claude://x/local_b' },
+  { sessionId: 'local_d', title: 'btw: question rapide', cwd: '/Code/client-a', isRunning: true, lastActivityAt: '2026-11-12T14:58:00Z', group: null, link: 'claude://x/local_d' },
   { sessionId: 'local_c', title: 'Vieux brouillon', cwd: '/Code/client-b', lastActivityAt: '2026-11-01T10:00:00Z', group: null, link: 'claude://x/local_c' },
 ]
 const SELF = { sessionId: 'local_self', title: 'Ici', cwd: '/tmp/scratch-workspaces/x', lastActivityAt: '2026-11-12T15:00:00Z', group: null }
@@ -62,6 +63,7 @@ test('groups by project, hides idle, opens on press', async ($, on) => {
     expect(await ui.find({ type: 'Text', text: 'Client a' })).toBeUndefined()
     expect(await ui.find({ type: 'Text', text: 'Bilan client' })).toBeDefined()
     expect(await ui.find({ type: 'Text', text: 'Vieux brouillon' })).toBeUndefined()
+    expect(await ui.find({ type: 'Text', text: 'btw: question rapide' })).toBeUndefined()
     expect(await ui.find({ type: 'Text', text: 'PR #72' })).toBeDefined()
     await ui.unmount()
   }
