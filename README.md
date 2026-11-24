@@ -1,38 +1,40 @@
-# Chantiers
+# claude-better-sessions
 
-Un panneau à côté du chat de Claude Code qui montre vos sessions par projet : celles où Claude travaille, celles qui ont une PR ouverte, celles touchées dans les dernières 24 heures. Un clic sur une session l'ouvre.
+A pane next to the Claude Code chat that shows your sessions by project: the ones where Claude is working, the ones with an open PR, the ones touched in the last 24 hours. Click a session to open it.
 
-## Ce que vous voyez
+The plugin is named **Chantiers** (French for "work sites"), which is the label you will see in the app.
 
-- Une carte par projet. Le projet vient de vos sections de la barre latérale, sinon du nom du dossier.
-- Une pastille par session : vert quand Claude travaille, jaune pour une PR ouverte, bleu pour une activité récente, gris pour une session inactive.
-- Les sessions inactives sont masquées. Un bouton en bas du panneau les affiche.
-- Une barre au-dessus du champ de saisie, avec le bouton **▤ Chantiers** pour ouvrir ou fermer le panneau. La commande `/chantiers` fait la même chose.
-- La liste se met à jour toute seule toutes les 15 secondes.
+## What you see
 
-## Prérequis
+- One card per project. The project comes from your sidebar sections, or else from the folder name.
+- One dot per session: green when Claude is working, yellow for an open PR, blue for recent activity, grey for an idle session.
+- Idle sessions are hidden. A button at the bottom of the pane shows them.
+- A bar above the prompt input, with the **▤ Chantiers** button to open or close the pane. The `/chantiers` command does the same.
+- The list refreshes on its own every 15 seconds.
 
-L'app desktop Claude Code sur Mac. Le panneau lit la liste des sessions avec un outil propre à l'app et ouvre une session avec la commande macOS `open`. Dans le terminal ou sous Windows, il affiche « Lecture impossible ».
+## Requirements
+
+The Claude Code desktop app on macOS. The pane reads the session list with a tool specific to the app and opens a session with the macOS `open` command. In the terminal or on Windows, it shows « Lecture impossible » (unable to read).
 
 ## Installation
 
-Depuis un terminal :
+From a terminal:
 
 ```bash
-claude plugin install chantiers --marketplace ChristopheHvd/claude-chantiers
+claude plugin install chantiers --marketplace ChristopheHvd/claude-better-sessions
 ```
 
-Dans une session Claude Code lancée depuis un terminal :
+In a Claude Code session started from a terminal:
 
 ```
-/plugin install chantiers --marketplace ChristopheHvd/claude-chantiers
+/plugin install chantiers --marketplace ChristopheHvd/claude-better-sessions
 ```
 
-Dans l'app desktop, où `/plugin` ne marche pas : cliquez sur **+** à côté du champ de saisie, puis **Plugins**, **Add marketplace** avec `ChristopheHvd/claude-chantiers`, puis **Add plugin**.
+In the desktop app, where `/plugin` does not work: click **+** next to the prompt input, then **Plugins**, **Add marketplace** with `ChristopheHvd/claude-better-sessions`, then **Add plugin**.
 
-Le panneau apparaît dans les nouvelles sessions.
+The pane appears in new sessions.
 
-## Désinstallation
+## Uninstall
 
 ```bash
 claude plugin uninstall chantiers
